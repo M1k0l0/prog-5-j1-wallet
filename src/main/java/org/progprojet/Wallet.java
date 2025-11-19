@@ -9,7 +9,7 @@ public class Wallet {
     private double existingMoney;
     private boolean isLost;
 
-    public Wallet(String color, int cardHolder, double weight, String brand){
+    public Wallet(String color, int cardHolder, double weight, String brand) {
         this.color = color;
         this.cardHolder = cardHolder;
         this.weight = weight;
@@ -19,51 +19,51 @@ public class Wallet {
         this.isLost = false;
     }
 
-    public double getMoney(double amount){
-        if(isLost){
+    public double getMoney(double amount) {
+        if (isLost) {
             return 0;
         }
-        if (existingMoney >= amount){
+        if (existingMoney >= amount) {
             existingMoney -= amount;
             return existingMoney;
         }
         return 0;
     }
 
-    public double addMoney(double amount){
-        if(isLost || amount <= 0){
+    public double addMoney(double amount) {
+        if (isLost || amount <= 0) {
             return 0;
         }
         existingMoney += amount;
         return existingMoney;
     }
 
-    public double checkMoney(){
-        if(isLost){
+    public double checkMoney() {
+        if (isLost) {
             return 0;
         }
         return existingMoney;
     }
-    public boolean addCard(int card){
-        if(isLost){
+    public boolean addCard(int card) {
+        if (isLost) {
             return false;
         }
-        if(existingCard + card <= cardHolder){
+        if (existingCard + card <= cardHolder) {
             existingCard += card;
             return true;
         }
         return false;
     }
 
-    public void lost(){
+    public void lost() {
         isLost = true;
         existingMoney = 0;
         existingCard = 0;
     }
 
     @Override
-    public String toString(){
-        if(isLost){
+    public String toString() {
+        if (isLost) {
             return "The wallet is lost!";
         }
         return "Wallet{"
@@ -83,7 +83,7 @@ public class Wallet {
                 '}';
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Wallet wallet = new Wallet("red", 5, 0.6, "Gucci");
 
         wallet.addMoney(200);
